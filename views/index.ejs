@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <ul>
+        <% tasks.forEach(task => { %>
+            <li><strong><%= task.subject %></strong>: <%= task.description %></li>
+        <% }) %>
+    </ul>
+
+    <form action="/update" method="post">
+    <input type="text" name="subject" id="subject" placeholder="Enter subject">
+    <br>
+    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+    <button type="submit">Add</button>
+    </form>
+
+    
+</body>
+</html>
