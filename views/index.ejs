@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-do List</title>
+    <link rel="stylesheet" href="./styles.css">
+    <title>To-Do List</title>
 </head>
 <body>
-    <h1>Todo List</h1>
-    <ul>
-        <% tasks.forEach(task => { %>
-            <li><strong><%= task.subject %></strong>: <%= task.description %></li>
-        <% }) %>
-    </ul>
+    <div id="main">
+        <h1>To-Do List</h1><br>
+        <form action="/update" class="form" method="post">
+            <input type="text" name="subject" id="subject" placeholder="Enter your task" required>
+            <button type="submit" id="add">Add Task</button>
+        </form>
+    </div>
 
-    <form action="/update" method="post">
-    <input type="text" name="subject" id="subject" placeholder="Enter subject">
-    <br>
-    <textarea name="description" id="description" cols="30" rows="10"></textarea>
-    <button type="submit">Add</button>
-    </form>
-
-    
+    <div class="task-list">
+        <% if (tasks && tasks.length > 0) { %>
+            <h3>Task Pending</h3>
+            <ul>
+                <% tasks.forEach(task => { %>
+                    <li><%= task.subject %></li><button class="remove">Remove</button>
+                <% }) %>
+            </ul>
+            
+        <% } else { %>
+            <p>No tasks found.</p>
+        <% } %>
+    </div>
 </body>
 </html>
