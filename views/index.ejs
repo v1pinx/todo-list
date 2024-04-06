@@ -19,7 +19,6 @@
         <% } else { %>
             <p></p> <!-- or any other default message you want to display -->
         <% } %>
-        
 
     </div>
 
@@ -31,17 +30,19 @@
                     <li><%= task.subject %></li><button class="remove">Remove</button>
                 <% }) %>
             </ul> -->
+            <% tasks.forEach(task => { %>
             <ul>
-                <% tasks.forEach(task => { %>
+                
                     <li>
-                        <%= task.subject %>
+                        <%= task.subject %></li>
                         <form action="/remove" method="POST" class="form2">
                             <input type="hidden" name="taskId" value="<%= task._id %>">
-                            <button type="submit">Remove</button>
+                            <button type="submit" class="remove">Remove</button><br>
                         </form>
-                    </li>
-                <% }) %>
+                    
+                
             </ul>
+            <% }) %>
             
         <% } else { %>
             <p>No tasks found.</p>
