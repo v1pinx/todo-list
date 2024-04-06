@@ -81,13 +81,37 @@ html,body{
     background-image: linear-gradient(to left bottom, #2c2cb1, #1c34aa, #0d39a2, #063d99, #0c408f, #2a397d, #34326b, #372d5a, #35203f, #2a1627, #1b0e15, #000000);
 }
 
-/* .form2{
-    position: relative;
-    width: 400px;   
-}
-.remove{
-    position: absolute;
-    right: 0;
-} */
 
 
+
+
+
+
+
+ svg text {
+   letter-spacing: 10px;
+   stroke: #ffa5d8;
+   font-size: 90px;
+   font-weight: 700;
+   stroke-width: 3;
+  
+   animation: textAnimate 5s infinite alternate;
+   
+ }
+ 
+ @keyframes textAnimate {
+   0% {
+     stroke-dasharray: 0 50%;
+     stroke-dashoffset:  20%;
+     fill:hsl(189, 68%, 75%)
+ 
+   }
+   
+   100% {
+     stroke-dasharray: 50% 0;
+     stroke-dashoffstet: -20%;
+     fill: hsla(189, 68%, 75%,0%)
+   }
+   
+ }
+ 
