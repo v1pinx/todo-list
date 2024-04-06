@@ -46,6 +46,10 @@ html,body{
     color: white;
     background-image: linear-gradient(to left bottom, #2c2cb1, #1c34aa, #0d39a2, #063d99, #0c408f, #2a397d, #34326b, #372d5a, #35203f, #2a1627, #1b0e15, #000000);
 }
+#add:hover{
+    cursor: pointer;
+}
+
 
 .task-list{
     margin-top: 45px;

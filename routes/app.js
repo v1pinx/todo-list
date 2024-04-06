@@ -6,19 +6,33 @@ const Task = require('../models/model');
 
 router.get('/', async (req, res) => {
     const tasks = await Task.find();
-    // res.send('hello')
-    res.render('index', {tasks});
-})
+    const message = req.query.message ? req.query.message : " ";
+    res.render('index', { tasks, message });
+});
+
 
 router.post('/update', async (req, res) => {
-    const { subject, description } = req.body;
+    const { subject } = req.body;
 
     await Task.create({
         subject,
-        description,
     });
 
-    res.send('Task added');
+    res.redirect('/?message=Task added successfully');
 })
+
+router.post('/remove', async (req, res) => {
+    const { taskId } = req.body;
+
+    try {
+        await Task.findOneAndDelete({ _id: taskId });
+        res.redirect('/?message=Task removed successfully');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error removing task');
+
+    }
+});
+
 
 module.exports = router;

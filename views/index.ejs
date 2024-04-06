@@ -13,14 +13,33 @@
             <input type="text" name="subject" id="subject" placeholder="Enter your task" required>
             <button type="submit" id="add">Add Task</button>
         </form>
+        
+        <% if (message && message.length > 0) { %>
+            <p style="color: white; position: relative; top: 10px;"><%= message %></p>
+        <% } else { %>
+            <p></p> <!-- or any other default message you want to display -->
+        <% } %>
+        
+
     </div>
 
     <div class="task-list">
         <% if (tasks && tasks.length > 0) { %>
             <h3>Task Pending</h3>
-            <ul>
+            <!-- <ul>
                 <% tasks.forEach(task => { %>
                     <li><%= task.subject %></li><button class="remove">Remove</button>
+                <% }) %>
+            </ul> -->
+            <ul>
+                <% tasks.forEach(task => { %>
+                    <li>
+                        <%= task.subject %>
+                        <form action="/remove" method="POST" class="form2">
+                            <input type="hidden" name="taskId" value="<%= task._id %>">
+                            <button type="submit">Remove</button>
+                        </form>
+                    </li>
                 <% }) %>
             </ul>
             
